@@ -34,17 +34,12 @@ int main(int argc, char *argv[]) {
 	domain=argv[1];
 	lpsUserName=argv[2];
 	lpsPwd=argv[3];
-	while(1){
-		
-		if(NetIsOk()){
-			printf("网络已连接\n");
+	if(NetIsOk()){
+		printf("网络已连接\n");
 			
-		}else if(NetIsOklt()==1&&NetIsOk()==0){//判断如果联通网络可以ping通并且外部网络不同，即可以进行认证
-			auth(domain,lpsUserName,lpsPwd,ifname);
-			sleep(20);
-		}
-		
+	}else if(NetIsOklt()==1&&NetIsOk()==0){//判断如果联通网络可以ping通并且外部网络不同，即可以进行认证
+		auth(domain,lpsUserName,lpsPwd,ifname);
+		sleep(20);
 	}
-	
 	return 1;
 }
